@@ -45,3 +45,25 @@ delivery.sanofi.plavix <- history.sanofi.plavix %>%
 
 write.xlsx(delivery.sanofi.lantus, '03_Outputs/lantus_chc_2018Q1_2020Q4.xlsx')
 write.xlsx(delivery.sanofi.plavix, '03_Outputs/plavix_chc_2018Q1_2020Q4.xlsx')
+
+
+##---- Adjustment ----
+sanofi.lantus.adj <- delivery.sanofi.lantus %>% 
+  mutate(Unit = case_when(
+    YM == '2020Q4' & PRODUCT.DESC == 'LANTUS             AVS' ~ Unit * 0.91, 
+    YM == '2020Q4' & PRODUCT.DESC == 'USLIN 30R          ZUI' ~ Unit * 3, 
+    YM == '2020Q4' & PRODUCT.DESC == 'NOVOMIX50 PENFILL  NKT' ~ Unit * 0.2, 
+    YM == '2020Q4' & PRODUCT.DESC == 'GANSULIN R         TDB' ~ Unit * 0.5, 
+    TRUE ~ Unit
+  ))
+
+sanofi.plavix.adj <- delivery.sanofi.plavix %>% 
+  mutate(Unit = case_when(
+    YM == '2020Q4' & PRODUCT.DESC == 'BAYASPIRIN         BAY' ~ Unit * 1.25, 
+    TRUE ~ Unit
+  ))
+
+write.xlsx(sanofi.lantus.adj, '03_Outputs/lantus_chc_2018Q1_2020Q4.xlsx')
+write.xlsx(sanofi.plavix.adj, '03_Outputs/plavix_chc_2018Q1_2020Q4.xlsx')
+
+
