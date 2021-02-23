@@ -1,5 +1,5 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
-# ProjectName:  Growth CHC
+# ProjectName:  Sanofi CHC 2020Q4
 # Purpose:      Readin
 # programmer:   Zhe Liu
 # Date:         2021-02-08
